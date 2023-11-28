@@ -12,7 +12,7 @@ Please run this command:
 
 ## Deployed site
 
-Fully working example can be found [here](https://arielbar.github.io/timer-homework-broken-v13/)
+Fully working example can be found [here](https://arielbar.github.io/timer-homework-broken/)
 
 ---
 

@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "timer-homework-broken-v13": {
+    "timer-homework-broken": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/timer-homework-broken-v13",
+            "outputPath": "dist/timer-homework-broken",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "timer-homework-broken-v13:build:production"
+              "browserTarget": "timer-homework-broken:build:production"
             },
             "development": {
-              "browserTarget": "timer-homework-broken-v13:build:development"
+              "browserTarget": "timer-homework-broken:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "timer-homework-broken-v13:build"
+            "browserTarget": "timer-homework-broken:build"
           }
         },
         "test": {
@@ -108,5 +108,5 @@
       }
     }
   },
-  "defaultProject": "timer-homework-broken-v13"
+  "defaultProject": "timer-homework-broken"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "timer-homework-broken-v13",
+  "name": "timer-homework-broken",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -33,7 +33,6 @@
     "@angular-devkit/build-angular": "~13.3.11",
     "@angular/cli": "~13.3.11",
     "@angular/compiler-cli": "~13.3.0",
-    "@briebug/jest-schematic": "^6.0.0",
     "@types/jest": "^29.5.10",
     "@types/node": "^12.11.1",
     "angular-cli-ghpages": "^1.0.7",

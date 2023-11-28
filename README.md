@@ -8,7 +8,7 @@ Please run this command:
 ## How to deploy
 
 Please run this command:  
-`ng deploy --base-href=/timer-homework-broken-v13/`
+`ng deploy --base-href=/timer-homework-broken/`
 
 ## Deployed site
 

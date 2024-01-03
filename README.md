@@ -51,3 +51,7 @@ The user can input a text and click Add
 
 - task name should be unique.
   ![](./docs/bug%202.png)
+
+## How to send task back?
+
+There is no option to create a branch from original repo, please **fork** and open PR from fork.

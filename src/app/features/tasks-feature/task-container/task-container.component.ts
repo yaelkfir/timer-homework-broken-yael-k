@@ -1,8 +1,7 @@
 import {
   Component,
   OnInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TaskModel } from '../../../core/models/task-model';

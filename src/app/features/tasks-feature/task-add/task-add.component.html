@@ -1,21 +1,17 @@
 <form [formGroup]="form" novalidate (ngSubmit)="submitHandler(form.value.text)">
   <mat-card class="add-card">
     <mat-card-content>
-      <div class="row">
+      <div class="row" *ngIf="form.get('text') as ctrl">
         <mat-form-field>
           <input matInput placeholder="Task Name" formControlName="text" />
-          <mat-error *ngIf="form.controls['text'].hasError('required')">
+          <mat-error *ngIf="ctrl.hasError('required')">
             Minimal text is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-        <div *ngIf="form.get('text')?.status === 'PENDING'">Checking...</div>
-        <div
-          *ngIf="
-            form.get('text')?.errors && form.get('text')?.errors['nameTaken']
-          "
-        >
+        <p *ngIf="ctrl?.status === 'PENDING'">Checking...</p>
+        <p *ngIf="ctrl?.hasError('nameTaken')">
           😢 Oh noes, this task is already exists!
-        </div>
+        </p>
         <button
           color="primary"
           mat-raised-button

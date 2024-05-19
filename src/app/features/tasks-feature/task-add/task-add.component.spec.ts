@@ -1,12 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { LogicService } from '../logic.service';
 import { TaskAddComponent } from './task-add.component';
 import { of } from 'rxjs';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { TaskStoreService } from '../../../core/services/task-store.service';
+
 describe('TaskAddComponent', () => {
   let component: TaskAddComponent;
   let fixture: ComponentFixture<TaskAddComponent>;
@@ -17,7 +18,7 @@ describe('TaskAddComponent', () => {
     };
     TestBed.configureTestingModule({
       declarations: [TaskAddComponent],
-      providers: [{ provide: LogicService, useValue: logicServiceStub }],
+      providers: [{ provide: TaskStoreService, useValue: logicServiceStub }],
       imports: [
         ReactiveFormsModule,
         FormsModule,
@@ -35,8 +36,8 @@ describe('TaskAddComponent', () => {
   });
   describe('validateNameExists', () => {
     it('makes expected calls', () => {
-      const logicServiceStub: LogicService =
-        fixture.debugElement.injector.get(LogicService);
+      const logicServiceStub: TaskStoreService =
+        fixture.debugElement.injector.get(TaskStoreService);
       jest.spyOn(logicServiceStub, 'nameExists').mockReturnValue(of(true));
 
       const given = { value: 'hello' } as any;
@@ -55,8 +56,8 @@ describe('TaskAddComponent', () => {
   });
   describe('submitHandler', () => {
     it('makes expected calls', () => {
-      const logicServiceStub: LogicService =
-        fixture.debugElement.injector.get(LogicService);
+      const logicServiceStub: TaskStoreService =
+        fixture.debugElement.injector.get(TaskStoreService);
       const spyAddTask = jest.spyOn(logicServiceStub, 'addTask');
       fixture.detectChanges();
       component.submitHandler('someText');

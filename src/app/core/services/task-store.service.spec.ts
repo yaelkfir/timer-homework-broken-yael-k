@@ -1,11 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { TaskFactoryService } from './task-factory.service';
-import { LogicService } from './logic.service';
+import { TaskStoreService } from './task-store.service';
 import { skip, bufferCount } from 'rxjs/operators';
 describe('LogicService', () => {
-  let service: LogicService;
+  let service: TaskStoreService;
   beforeEach(() => {
-    const taskModelStub = { id: {}, buttonText: {} };
     const fakeService = {
       createTask: () => ({}),
       pause: () => ({}),
@@ -13,11 +12,11 @@ describe('LogicService', () => {
     };
     TestBed.configureTestingModule({
       providers: [
-        LogicService,
+        TaskStoreService,
         { provide: TaskFactoryService, useValue: fakeService },
       ],
     });
-    service = TestBed.get(LogicService);
+    service = TestBed.get(TaskStoreService);
   });
   it('can load instance', () => {
     expect(service).toBeTruthy();

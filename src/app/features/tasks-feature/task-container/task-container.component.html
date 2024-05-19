@@ -1,7 +1,10 @@
 <mat-card>
   <app-task-presenter
     *ngFor="let task of tasks$ | async"
-    [task]="task"
+    [name]="task.name"
+    [id]="task.id"
+    [timer]="task.timer"
+    [buttonText]="task.buttonText"
     (clicked)="onClick($event)"
   ></app-task-presenter>
 </mat-card>

@@ -9,32 +9,17 @@ exports[`TaskContainerComponent DOM should render tasks$ 1`] = `
   >
     <app-task-presenter>
       <p>
-        {
-  "id": 1,
-  "name": "test1",
-  "buttonText": "pause",
-  "timer": {}
-}
+        
       </p>
     </app-task-presenter>
     <app-task-presenter>
       <p>
-        {
-  "id": 2,
-  "name": "test2",
-  "buttonText": "pause",
-  "timer": {}
-}
+        
       </p>
     </app-task-presenter>
     <app-task-presenter>
       <p>
-        {
-  "id": 3,
-  "name": "test3",
-  "buttonText": "pause",
-  "timer": {}
-}
+        
       </p>
     </app-task-presenter>
     

@@ -1,11 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Input, Component } from '@angular/core';
-import { TaskModel } from '../models/task-model';
-import { LogicService } from '../logic.service';
+import { TaskModel } from '../../../core/models/task-model';
+import { TaskStoreService } from '../../../core/services/task-store.service';
 import { TaskContainerComponent } from './task-container.component';
 import { MatCardModule } from '@angular/material/card';
-import { MinuteSecondsPipe } from '../minute-seconds.pipe';
-import { of } from 'rxjs';
+import { MinuteSecondsPipe } from '../../../core/pipes/minute-seconds.pipe';
+import { Observable, of } from 'rxjs';
+import { buttonText } from 'src/app/core/models/button-text';
+
 describe('TaskContainerComponent', () => {
   let component: TaskContainerComponent;
   let fixture: ComponentFixture<TaskContainerComponent>;
@@ -14,8 +16,11 @@ describe('TaskContainerComponent', () => {
     selector: 'app-task-presenter',
     template: ` <p>{{ task | json }}</p> `,
   })
-  class FakeComponent {
-    @Input() task: TaskModel;
+  class FakeComponent implements TaskModel {
+    @Input() id: number;
+    @Input() name: string;
+    @Input() timer: Observable<number>;
+    @Input() buttonText: buttonText;
   }
 
   class FakeService {
@@ -30,10 +35,9 @@ describe('TaskContainerComponent', () => {
     }
   }
   beforeEach(() => {
-    const taskModelStub = {};
     TestBed.configureTestingModule({
       declarations: [TaskContainerComponent, FakeComponent, MinuteSecondsPipe],
-      providers: [{ provide: LogicService, useClass: FakeService }],
+      providers: [{ provide: TaskStoreService, useClass: FakeService }],
       imports: [MatCardModule],
     });
     fixture = TestBed.createComponent(TaskContainerComponent);
@@ -50,17 +54,17 @@ describe('TaskContainerComponent', () => {
         timer: of(),
         buttonText: 'play_arrow',
       };
-      const logicServiceStub: LogicService =
-        fixture.debugElement.injector.get(LogicService);
+      const logicServiceStub: TaskStoreService =
+        fixture.debugElement.injector.get(TaskStoreService);
       jest.spyOn(logicServiceStub, 'updateTask');
-      component.onClick(taskModelStub);
+      component.onClick(-1);
       expect(logicServiceStub.updateTask).toHaveBeenCalled();
     });
   });
   describe('DOM', () => {
     it('should render totalTime$', () => {
-      const logicServiceStub: LogicService =
-        fixture.debugElement.injector.get(LogicService);
+      const logicServiceStub: TaskStoreService =
+        fixture.debugElement.injector.get(TaskStoreService);
       jest.spyOn(logicServiceStub, 'totalTime$', 'get').mockReturnValue(of(35));
       fixture.detectChanges();
 
@@ -69,8 +73,8 @@ describe('TaskContainerComponent', () => {
       });
     });
     it('should render tasks$', () => {
-      const logicServiceStub: LogicService =
-        fixture.debugElement.injector.get(LogicService);
+      const logicServiceStub: TaskStoreService =
+        fixture.debugElement.injector.get(TaskStoreService);
       const tasks: TaskModel[] = [
         { id: 1, name: 'test1', buttonText: 'pause', timer: of(1) },
         { id: 2, name: 'test2', buttonText: 'pause', timer: of(1) },

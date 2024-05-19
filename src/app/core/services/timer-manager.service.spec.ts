@@ -1,15 +1,14 @@
-import { TestBed, fakeAsync, tick, flush } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { TimerManagerService } from './timer-manager.service';
-import { merge, concat } from 'rxjs';
 describe('TimerManagerService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: TimerManagerService = TestBed.get(TimerManagerService);
+    const service: TimerManagerService = TestBed.inject(TimerManagerService);
     expect(service).toBeTruthy();
   });
   it('should create new timer', (done) => {
-    const service: TimerManagerService = TestBed.get(TimerManagerService);
+    const service: TimerManagerService = TestBed.inject(TimerManagerService);
     const sut = service.getTimer(123);
     sut.subscribe((emptyTimer) => {
       expect(emptyTimer).toEqual(service.initialValue);

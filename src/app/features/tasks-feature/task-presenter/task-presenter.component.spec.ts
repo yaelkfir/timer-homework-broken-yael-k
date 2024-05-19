@@ -25,24 +25,22 @@ describe('TaskPresenterComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TaskPresenterComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
+    // Arrange
+    Object.assign(component, {
+      id: 1,
+      name: 'some name',
+      buttonText: 'pause',
+      timer: of(10),
+    })
+
+    // act
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
   it('should render task', () => {
-    // Arrange
-    component.task = {
-      id: 1,
-      name: 'some name',
-      buttonText: 'pause',
-      timer: of(10),
-    };
-    // Act
-    fixture.detectChanges();
-
-    // Assert
     expect(fixture.nativeElement).toMatchSnapshot();
   });
 });

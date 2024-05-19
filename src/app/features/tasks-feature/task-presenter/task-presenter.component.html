@@ -1,0 +1,7 @@
+<mat-card class="row">
+  <p class="input-name">{{ name | uppercase  }}</p>
+  <p>{{ timer | async | minuteSeconds }}</p>
+  <button mat-fab (click)="click()">
+    <mat-icon>{{ buttonText }}</mat-icon>
+  </button>
+</mat-card>
